@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.jlbennett.musicpracticeprompter.databinding.FragmentTitleBinding
+import com.jlbennett.musicpracticeprompter.databinding.FragmentPromptBinding
 
 class PromptFragment : Fragment() {
 
@@ -14,7 +14,7 @@ class PromptFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
+        val binding: FragmentPromptBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
         return binding.root
     }
 }
