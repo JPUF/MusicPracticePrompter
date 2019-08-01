@@ -14,7 +14,5 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        //TODO include the title fragment into this MainActivity (namely, the XML). Preferably using the NavHost stuff. 
-
     }
 }
