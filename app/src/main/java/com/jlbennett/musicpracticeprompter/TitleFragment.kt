@@ -23,8 +23,6 @@ class TitleFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_titleFragment_to_promptFragment)
         }
 
-        
-
         return binding.root
     }
 }

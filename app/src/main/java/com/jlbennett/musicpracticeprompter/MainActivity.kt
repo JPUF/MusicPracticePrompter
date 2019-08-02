@@ -23,8 +23,4 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.myNavHostFragment)
         return navController.navigateUp()
     }
-
-    fun setActionBarTitle(title: String) {
-        supportActionBar!!.title = title
-    }
 }
