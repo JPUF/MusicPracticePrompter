@@ -6,4 +6,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="gmin">Gmin</string>
     <string name="next">Next</string>
+    <string name="prompt">Press \'Next\' for a prompt.</string>
 </resources>
