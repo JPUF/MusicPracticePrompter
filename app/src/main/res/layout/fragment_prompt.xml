@@ -8,28 +8,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent"
                                                        android:id="@+id/promptConstraint">
-        <LinearLayout
-                android:orientation="vertical"
+        <TextView
+                android:text="@string/prompt"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp">
-            <TextView
-                    android:text="@string/prompt"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/promptText"
-                    android:layout_marginTop="16dp" android:layout_weight="0.8" android:textAlignment="center"
-                    android:textSize="36sp" android:textColor="@android:color/black"/>
-            <Button
-                    android:text="@string/next"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/nextButton" android:layout_weight="0.2" android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"/>
-        </LinearLayout>
+                android:layout_height="0dp"
+                android:id="@+id/promptText"
+                android:layout_weight="0.8" android:textAlignment="center"
+                android:textSize="64sp" android:textColor="@android:color/black"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" android:fontFamily="@font/roboto"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

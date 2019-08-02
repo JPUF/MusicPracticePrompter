@@ -19,10 +19,12 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
 
-        //TODO why doesn't this function navigate to the prompt fragment...
         binding.titleButton.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(R.id.action_titleFragment_to_promptFragment)
         }
+
+        
+
         return binding.root
     }
 }

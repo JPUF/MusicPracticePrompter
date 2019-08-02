@@ -19,8 +19,8 @@ class PromptFragment : Fragment() {
         val binding: FragmentPromptBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
 
-        binding.nextButton.setOnClickListener {
-            val roots = listOf("A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#")
+        binding.promptText.setOnClickListener {
+            val roots = listOf("A", "A♯", "B", "C", "D♭", "D", "E♭", "E", "F", "F♯", "G", "G♯")
             val mode = listOf("Major", "Minor")
             binding.promptText.text = "${roots.random()}\n${mode.random()}"
         }
