@@ -2,8 +2,13 @@
     <string name="app_name">Music Practice Prompter</string>
     <string name="note_description">Image of a pair of musical notes</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next">Next</string>
     <string name="prompt">Tap for a prompt.</string>
+    <string name="presets">Presets</string>
+
+    <string-array name="presetArray">
+        <item>All keys</item>
+        <item>All major keys</item>
+        <item>All natural minor keys</item>
+    </string-array>
 </resources>
