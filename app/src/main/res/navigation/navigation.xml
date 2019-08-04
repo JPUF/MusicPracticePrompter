@@ -4,9 +4,9 @@
             android:id="@+id/navigation.xml" app:startDestination="@id/titleFragment">
 
     <fragment android:id="@+id/titleFragment" android:name="com.jlbennett.musicpracticeprompter.TitleFragment"
-              android:label="TitleFragment">
+              android:label="Music Practice Prompter">
         <action android:id="@+id/action_titleFragment_to_promptFragment" app:destination="@+id/promptFragment"/>
     </fragment>
     <fragment android:id="@+id/promptFragment" android:name="com.jlbennett.musicpracticeprompter.PromptFragment"
-              android:label="PromptFragment"/>
+              android:label="Music Practice Prompter"/>
 </navigation>
