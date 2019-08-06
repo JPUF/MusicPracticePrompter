@@ -5,6 +5,7 @@
     <string name="next">Next</string>
     <string name="prompt">Tap for a prompt.</string>
     <string name="presets">Presets</string>
+    <string name="notes">Notes</string>
 
     <string-array name="presetArray">
         <item>All keys</item>
@@ -25,5 +26,20 @@
         <item>E♭ Major</item>
         <item>B♭ Major</item>
         <item>F Major</item>
+    </string-array>
+
+    <string-array name="noteLookupArray"><!-->Currently only the Major keys<-->
+        <item>C Major|C D E F G A B</item>
+        <item>G Major|G A B C D E F♯</item>
+        <item>D Major|D E F♯ G A B C♯</item>
+        <item>A Major|A B C♯ D E F♯ G♯</item>
+        <item>E Major|E F♯ G♯ A B C♯ D♯</item>
+        <item>B Major|B C♯ D♯ E F♯ G♯ A♯</item>
+        <item>F♯ Major|F♯ G♯ A♯ B C♯ D♯ E♯</item>
+        <item>D♭ Major|D♭ E♭ F G♭ A♭ B♭ C</item>
+        <item>A♭ Major|A♭ B♭ C D♭ E♭ F♭ G</item>
+        <item>E♭ Major|E♭ F G A♭ B♭ C D</item>
+        <item>B♭ Major|B♭ E C D E♭ F G A</item>
+        <item>F Major|F G A B♭ C D E</item>
     </string-array>
 </resources>
