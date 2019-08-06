@@ -15,7 +15,7 @@
                 android:layout_height="0dp"
                 android:id="@+id/promptText"
                 android:layout_weight="0.8" android:textAlignment="center"
-                android:textSize="64sp" android:textColor="@android:color/black"
+                android:textSize="84sp" android:textColor="@android:color/black"
                 android:layout_marginTop="16dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
