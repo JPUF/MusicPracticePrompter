@@ -10,10 +10,10 @@
     <string-array name="presetArray">
         <item>All keys</item>
         <item>All major keys</item>
-        <item>All natural minor keys</item>
+        <item>All minor keys</item>
     </string-array>
 
-    <string-array name="allKeys"><!-->Currently only the Major keys<-->
+    <string-array name="allKeys">
         <item>C Major</item>
         <item>G Major</item>
         <item>D Major</item>
@@ -26,6 +26,49 @@
         <item>E♭ Major</item>
         <item>B♭ Major</item>
         <item>F Major</item>
+
+        <item>C Minor</item>
+        <item>G Minor</item>
+        <item>D Minor</item>
+        <item>A Minor</item>
+        <item>E Minor</item>
+        <item>B Minor</item>
+        <item>F♯ Minor</item>
+        <item>C♯ Minor</item>
+        <item>G♯ Minor</item>
+        <item>E♭ Minor</item>
+        <item>B♭ Minor</item>
+        <item>F Minor</item>
+    </string-array>
+
+    <string-array name="allMajorKeys"><!-->Currently only the Major keys<-->
+        <item>C Major</item>
+        <item>G Major</item>
+        <item>D Major</item>
+        <item>A Major</item>
+        <item>E Major</item>
+        <item>B Major</item>
+        <item>F♯ Major</item>
+        <item>D♭ Major</item>
+        <item>A♭ Major</item>
+        <item>E♭ Major</item>
+        <item>B♭ Major</item>
+        <item>F Major</item>
+    </string-array>
+
+    <string-array name="allMinorKeys">
+        <item>C Minor</item>
+        <item>G Minor</item>
+        <item>D Minor</item>
+        <item>A Minor</item>
+        <item>E Minor</item>
+        <item>B Minor</item>
+        <item>F♯ Minor</item>
+        <item>C♯ Minor</item>
+        <item>G♯ Minor</item>
+        <item>E♭ Minor</item>
+        <item>B♭ Minor</item>
+        <item>F Minor</item>
     </string-array>
 
     <string-array name="noteLookupArray"><!-->Currently only the Major keys<-->
@@ -41,5 +84,18 @@
         <item>E♭ Major|E♭ F G A♭ B♭ C D</item>
         <item>B♭ Major|B♭ E C D E♭ F G A</item>
         <item>F Major|F G A B♭ C D E</item>
+
+        <item>C Minor|C D E♭ F G A♭ B♭</item>
+        <item>G Minor|G A B♭ C D E♭ F</item>
+        <item>D Minor|D E F G A B♭ C</item>
+        <item>A Minor|A B C D E F G</item>
+        <item>E Minor|E F♯ G A B C D</item>
+        <item>B Minor|B C♯ D E F♯ G A</item>
+        <item>F♯ Minor|F♯ G♯ A B C♯ D E</item>
+        <item>C♯ Minor|C♯ D♯ E F♯ G♯ B A</item>
+        <item>G♯ Minor|G♯ A♯ B C♯ D♯ E F♯</item>
+        <item>E♭ Minor|E♭ F G♭ A♭ B♭ C♭ D♭</item>
+        <item>B♭ Minor|B♭ C D♭ E♭ F G♭ A♭</item>
+        <item>F Minor|F G A♭ B♭ C D♭ E♭</item>
     </string-array>
 </resources>
