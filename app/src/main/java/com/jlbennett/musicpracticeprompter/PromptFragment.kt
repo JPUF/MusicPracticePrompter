@@ -28,13 +28,21 @@ class PromptFragment : Fragment() {
         val args = PromptFragmentArgs.fromBundle(arguments!!)
         keyArray = resources.getStringArray(args.preset)
 
+        binding.promptText.setOnClickListener { setPrompt(binding) }
+        /*
         binding.promptText.setOnClickListener {
             binding.noteReminderLayout.visibility = View.VISIBLE
             binding.noteReminderText.text = ""
-            currentKey = keyArray.random()
+            if(!::currentKey.isInitialized)
+                currentKey = keyArray.random()
+
+            var newKey: String = currentKey
+            while (newKey == currentKey) {
+                newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
+            }
+            currentKey = newKey
             binding.promptText.text = currentKey.replace(' ', '\n')
-            //Toast.makeText(context, "Notes: ${getNotesFromKey(keyPrompt)}", Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
         binding.noteReminderButton.setOnClickListener {
             binding.noteReminderText.text = getNotesFromKey(currentKey)
@@ -43,10 +51,24 @@ class PromptFragment : Fragment() {
         return binding.root
     }
 
+    private fun setPrompt(binding: FragmentPromptBinding) {
+        binding.noteReminderLayout.visibility = View.VISIBLE
+        binding.noteReminderText.text = ""
+        if (!::currentKey.isInitialized)
+            currentKey = keyArray.random()
+
+        var newKey: String = currentKey
+        while (newKey == currentKey) {
+            newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
+        }
+        currentKey = newKey
+        binding.promptText.text = currentKey.replace(' ', '\n')
+    }
+
     private fun getNotesFromKey(key: String): String {
-        var notes: String = "notes"
+        var notes = "notes"
         val noteLookupArray = resources.getStringArray(R.array.noteLookupArray)
-        for(pair in noteLookupArray) {
+        for (pair in noteLookupArray) {
             val splitResult = pair.split("\\|".toRegex(), 2)
             if (splitResult[0] == key) {
                 notes = splitResult[1]
