@@ -8,5 +8,7 @@
         <action android:id="@+id/action_titleFragment_to_promptFragment" app:destination="@+id/promptFragment"/>
     </fragment>
     <fragment android:id="@+id/promptFragment" android:name="com.jlbennett.musicpracticeprompter.PromptFragment"
-              android:label="Music Practice Prompter"/>
+              android:label="Music Practice Prompter">
+        <argument android:name="preset" app:argType="reference"/>
+    </fragment>
 </navigation>

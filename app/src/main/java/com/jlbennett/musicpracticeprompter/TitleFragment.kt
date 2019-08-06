@@ -20,7 +20,7 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
 
         binding.titleButton.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment())
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allKeys))
         }
 
         return binding.root
