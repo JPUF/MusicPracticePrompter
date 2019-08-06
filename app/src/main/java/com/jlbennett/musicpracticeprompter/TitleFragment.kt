@@ -19,16 +19,16 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
 
-        binding.titleButton.setOnClickListener { view: View ->
-            Log.i("selection", binding.presetSpinner.selectedItem.toString())
-            var presetID: Int = R.array.allKeys //Defaults to all keys.
+        //TODO put text over the images.
 
-            when(binding.presetSpinner.selectedItem) {
-                "All keys" -> presetID = R.array.allKeys
-                "All major keys" -> presetID = R.array.allMajorKeys
-                "All minor keys" -> presetID = R.array.allMinorKeys
-            }
-            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(presetID))
+        binding.allKeysImage.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allKeys))
+        }
+        binding.allMajorKeysImage.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allMajorKeys))
+        }
+        binding.allMinorKeysImage.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allMinorKeys))
         }
 
         return binding.root

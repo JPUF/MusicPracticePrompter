@@ -29,20 +29,6 @@ class PromptFragment : Fragment() {
         keyArray = resources.getStringArray(args.preset)
 
         binding.promptText.setOnClickListener { setPrompt(binding) }
-        /*
-        binding.promptText.setOnClickListener {
-            binding.noteReminderLayout.visibility = View.VISIBLE
-            binding.noteReminderText.text = ""
-            if(!::currentKey.isInitialized)
-                currentKey = keyArray.random()
-
-            var newKey: String = currentKey
-            while (newKey == currentKey) {
-                newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
-            }
-            currentKey = newKey
-            binding.promptText.text = currentKey.replace(' ', '\n')
-        }*/
 
         binding.noteReminderButton.setOnClickListener {
             binding.noteReminderText.text = getNotesFromKey(currentKey)
