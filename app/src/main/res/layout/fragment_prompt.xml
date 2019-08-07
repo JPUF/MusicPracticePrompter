@@ -26,7 +26,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/noteReminderLayout"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
@@ -34,14 +34,15 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent" android:id="@+id/noteReminderText"
-                    android:layout_weight="0.75" tools:text="Note reminders here." android:textSize="24sp"
+                    tools:text="Note reminders here." android:textSize="24sp"
                     android:gravity="center"
-                    android:paddingStart="0dp" android:paddingEnd="8dp"/>
+                    android:paddingStart="0dp" android:paddingEnd="8dp" android:layout_weight="1"/>
             <Button
                     android:text="@string/notes"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content" android:id="@+id/noteReminderButton"
-                    android:layout_weight="0.25"/>
+                    android:layout_height="match_parent" android:id="@+id/noteReminderButton"
+                    android:maxLines="1" android:gravity="center"
+                    android:layout_weight="0.4"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

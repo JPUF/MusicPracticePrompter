@@ -22,7 +22,7 @@ class PromptFragment : Fragment() {
         val binding: FragmentPromptBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
 
         val args = PromptFragmentArgs.fromBundle(arguments!!)
-        keyArray = resources.getStringArray(args.preset)
+        keyArray = args.preset
 
         binding.promptText.setOnClickListener { setPrompt(binding) }
 

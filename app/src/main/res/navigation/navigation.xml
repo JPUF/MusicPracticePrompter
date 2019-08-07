@@ -10,8 +10,10 @@
     </fragment>
     <fragment android:id="@+id/promptFragment" android:name="com.jlbennett.musicpracticeprompter.PromptFragment"
               android:label="Music Practice Prompter">
-        <argument android:name="preset" app:argType="reference"/>
+        <argument android:name="preset" app:argType="string[]"/>
     </fragment>
     <fragment android:id="@+id/customKeyFragment" android:name="com.jlbennett.musicpracticeprompter.CustomKeyFragment"
-              android:label="Music Practice Prompter"/>
+              android:label="Music Practice Prompter">
+        <action android:id="@+id/action_customKeyFragment_to_promptFragment" app:destination="@id/promptFragment"/>
+    </fragment>
 </navigation>
