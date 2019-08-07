@@ -29,6 +29,10 @@ class TitleFragment : Fragment() {
             Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allMinorKeys))
         }
 
+        binding.customImage.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToCustomKeyFragment())
+        }
+
 
         return binding.root
     }

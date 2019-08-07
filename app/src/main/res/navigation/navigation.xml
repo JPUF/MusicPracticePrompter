@@ -6,9 +6,12 @@
     <fragment android:id="@+id/titleFragment" android:name="com.jlbennett.musicpracticeprompter.TitleFragment"
               android:label="Music Practice Prompter">
         <action android:id="@+id/action_titleFragment_to_promptFragment" app:destination="@+id/promptFragment"/>
+        <action android:id="@+id/action_titleFragment_to_customKeyFragment" app:destination="@id/customKeyFragment"/>
     </fragment>
     <fragment android:id="@+id/promptFragment" android:name="com.jlbennett.musicpracticeprompter.PromptFragment"
               android:label="Music Practice Prompter">
         <argument android:name="preset" app:argType="reference"/>
     </fragment>
+    <fragment android:id="@+id/customKeyFragment" android:name="com.jlbennett.musicpracticeprompter.CustomKeyFragment"
+              android:label="CustomKeyFragment"/>
 </navigation>
