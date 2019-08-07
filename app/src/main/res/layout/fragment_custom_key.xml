@@ -89,6 +89,46 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/bMinorChip" android:checkable="true"
                         android:text="B Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/cMinorChip" android:checkable="true"
+                        android:text="C Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/dMinorChip" android:checkable="true"
+                        android:text="D Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/eMinorChip" android:checkable="true"
+                        android:text="E Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/fMinorChip" android:checkable="true"
+                        android:text="F Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/gMinorChip" android:checkable="true"
+                        android:text="G Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/fsMinorChip" android:checkable="true"
+                        android:text="F♯ Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/csMinorChip" android:checkable="true"
+                        android:text="C♯ Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/gsMinorChip" android:checkable="true"
+                        android:text="G♯ Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/efMinorChip" android:checkable="true"
+                        android:text="E♭ Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/bfMinorChip" android:checkable="true"
+                        android:text="B♭ Minor" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
             </LinearLayout>
         </LinearLayout>
         <Button

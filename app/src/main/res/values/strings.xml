@@ -6,6 +6,8 @@
     <string name="prompt">Tap for a prompt.</string>
     <string name="presets">Presets</string>
     <string name="notes">Notes</string>
+    <string name="selectionTitle">Select the keys you\'d like to practice</string>
+    <string name="ready">Ready!</string>
 
     <string-array name="presetArray">
         <item>All keys</item>
@@ -98,9 +100,4 @@
         <item>B♭ Minor|B♭ C D♭ E♭ F G♭ A♭</item>
         <item>F Minor|F G A♭ B♭ C D♭ E♭</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="selectionTitle">Select the keys you want to practice</string>
-    <string name="ready">Ready!</string>
 </resources>
