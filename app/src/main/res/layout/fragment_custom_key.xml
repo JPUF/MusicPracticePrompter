@@ -38,6 +38,43 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/cMajorChip" android:checkable="true"
                         android:text="C Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/dMajorChip" android:checkable="true"
+                        android:text="D Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/eMajorChip" android:checkable="true"
+                        android:text="E Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/fMajorChip" android:checkable="true"
+                        android:text="F Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/gMajorChip" android:checkable="true"
+                        android:text="G Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/fsMajorChip" android:checkable="true"
+                        android:text="F♯ Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:checkable="true"
+                        android:text="D♭ Major" android:layout_gravity="center" android:layout_marginBottom="4dp"
+                        android:id="@+id/dfMajorChip"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/afMajorChip" android:checkable="true"
+                        android:text="A♭ Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/efMajorChip" android:checkable="true"
+                        android:text="E♭ Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/bfMajorChip" android:checkable="true"
+                        android:text="B♭ Major" android:layout_gravity="center" android:layout_marginBottom="4dp"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"

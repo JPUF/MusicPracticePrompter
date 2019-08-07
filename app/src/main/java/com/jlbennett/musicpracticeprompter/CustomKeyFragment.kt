@@ -22,13 +22,12 @@ class CustomKeyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding: FragmentCustomKeyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_key, container, false)
-        binding.readyButton.setOnClickListener { view: View ->
 
+        //TODO improve padding between chips. Buttons to 'Select/Deselect All'.
+        binding.readyButton.setOnClickListener { view: View ->
             if(!noneSelected(binding)) {
                 Navigation.findNavController(view).navigate(
-                    CustomKeyFragmentDirections.actionCustomKeyFragmentToPromptFragment(
-                        getCurrentKeyArray(binding)
-                    )
+                    CustomKeyFragmentDirections.actionCustomKeyFragmentToPromptFragment(getCurrentKeyArray(binding))
                 )
             } else {//No keys have been selected
                 Toast.makeText(activity, "Nothing selected", Toast.LENGTH_LONG).show()
