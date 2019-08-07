@@ -18,6 +18,7 @@ class CustomKeyFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentCustomKeyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_key, container, false)
 
+
         return binding.root
     }
 }

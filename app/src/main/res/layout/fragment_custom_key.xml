@@ -3,12 +3,41 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.example.android.navigation.CustomKeyFragment">
-    <FrameLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
-                android:text="Dogmatic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/textView"/>
-    </FrameLayout>
+                android:text="@string/selectionTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/selectText"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textSize="24sp"
+                android:gravity="center_horizontal"/>
+        <com.google.android.material.chip.ChipGroup
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/selectText" android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" android:id="@+id/keyChipGroup" app:chipSpacing="16dp">
+            <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/cMajorChip" android:checkable="true"
+                    android:text="C Major"/>
+            <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/gMajorChip" android:text="G Major"
+                    android:checkable="true"/>
+            <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/dMajorChip" android:text="D Major"
+                    android:checkable="true"/>
+            <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/aMajorChip" android:text="A Major"
+                    android:checkable="true"/>
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
