@@ -13,5 +13,5 @@
         <argument android:name="preset" app:argType="reference"/>
     </fragment>
     <fragment android:id="@+id/customKeyFragment" android:name="com.jlbennett.musicpracticeprompter.CustomKeyFragment"
-              android:label="CustomKeyFragment"/>
+              android:label="Music Practice Prompter"/>
 </navigation>
