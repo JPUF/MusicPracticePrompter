@@ -19,8 +19,6 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
 
-        //TODO put text over the images.
-
         binding.allKeysImage.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allKeys))
         }
@@ -30,6 +28,7 @@ class TitleFragment : Fragment() {
         binding.allMinorKeysImage.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(R.array.allMinorKeys))
         }
+
 
         return binding.root
     }

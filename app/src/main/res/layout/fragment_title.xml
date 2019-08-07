@@ -8,34 +8,43 @@
             android:id="@+id/titleConstraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ImageView
-                android:src="@drawable/piano"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/allKeysImage"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent" android:adjustViewBounds="true"
-                android:layout_marginEnd="16dp"/>
-        <LinearLayout
-                android:orientation="horizontal"
+        <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/modalKeyLayout"
-                app:layout_constraintTop_toBottomOf="@+id/allKeysImage" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp">
-            <ImageView
-                    android:src="@drawable/guitar"
-                    android:layout_width="0dp"
-                    android:layout_height="280sp" android:id="@+id/allMajorKeysImage"
-                    android:adjustViewBounds="true"
-                    android:layout_weight="0.5" android:paddingEnd="4dp"/>
-            <ImageView
-                    android:src="@drawable/violin"
-                    android:layout_width="0dp"
-                    android:layout_height="280sp" android:id="@+id/allMinorKeysImage"
-                    android:adjustViewBounds="true"
-                    android:layout_weight="0.5" android:paddingLeft="4dp"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+        >
+
+            <TableRow android:layout_width="match_parent" android:layout_height="0dp"
+                      android:layout_weight="1">
+                <ImageView
+                        android:src="@drawable/piano"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" android:id="@+id/allKeysImage"
+                        android:adjustViewBounds="true"
+                />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="0dp"
+                      android:layout_weight="1.4">
+                <ImageView
+                        android:src="@drawable/guitar"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" android:id="@+id/allMajorKeysImage"
+                        android:adjustViewBounds="true"
+                        android:layout_weight="0.5"/>
+                <ImageView
+                        android:src="@drawable/violin"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" android:id="@+id/allMinorKeysImage"
+                        android:adjustViewBounds="true"
+                        android:layout_weight="0.5"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="0dp"
+                      android:layout_weight="1">
+                <ImageView
+                        android:src="@drawable/sheetmusic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" android:id="@+id/customImage"
+                        android:adjustViewBounds="true"/>
+            </TableRow>
+        </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
