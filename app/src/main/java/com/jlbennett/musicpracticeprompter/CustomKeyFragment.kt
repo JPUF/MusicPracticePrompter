@@ -21,11 +21,11 @@ class CustomKeyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentCustomKeyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_custom_key, container, false)
-
-        //TODO improve padding between chips. Buttons to 'Select/Deselect All'.
+        val binding: FragmentCustomKeyBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_custom_key, container, false)
+        
         binding.readyButton.setOnClickListener { view: View ->
-            if(!noneSelected(binding)) {
+            if (!noneSelected(binding)) {
                 Navigation.findNavController(view).navigate(
                     CustomKeyFragmentDirections.actionCustomKeyFragmentToPromptFragment(getCurrentKeyArray(binding))
                 )
@@ -33,8 +33,21 @@ class CustomKeyFragment : Fragment() {
                 Toast.makeText(activity, "Nothing selected", Toast.LENGTH_LONG).show()
             }
         }
+        binding.selectAllButton.setOnClickListener { setAllChips(true, binding) }
+        binding.clearAllButton.setOnClickListener { setAllChips(false, binding) }
 
         return binding.root
+    }
+
+    private fun setAllChips(value: Boolean, binding: FragmentCustomKeyBinding) {
+        binding.majorLayout.children.forEach {
+            val chip: Chip? = it as Chip
+            chip!!.isChecked = value
+        }
+        binding.minorLayout.children.forEach {
+            val chip: Chip? = it as Chip
+            chip!!.isChecked = value
+        }
     }
 
     private fun noneSelected(binding: FragmentCustomKeyBinding): Boolean {
@@ -48,7 +61,7 @@ class CustomKeyFragment : Fragment() {
         binding.minorLayout.children.forEach {
             val chip: Chip? = it as Chip
             if (chip!!.isChecked) {
-                noneSelected =  false
+                noneSelected = false
             }
         }
         return noneSelected
