@@ -11,7 +11,10 @@
         <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-        >
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp" android:layout_marginEnd="8dp" android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp">
 
             <TableRow android:layout_width="match_parent" android:layout_height="0dp"
                       android:layout_weight="1">
@@ -20,22 +23,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/allKeysImage"
                         android:adjustViewBounds="true"
-                />
+                        android:scaleType="centerInside"/>
             </TableRow>
             <TableRow android:layout_width="match_parent" android:layout_height="0dp"
-                      android:layout_weight="1.4">
+                      android:layout_weight="1">
                 <ImageView
                         android:src="@drawable/guitar"
                         android:layout_width="0dp"
                         android:layout_height="match_parent" android:id="@+id/allMajorKeysImage"
                         android:adjustViewBounds="true"
-                        android:layout_weight="0.5"/>
+                        android:layout_weight="0.5" android:scaleType="fitEnd"/>
                 <ImageView
                         android:src="@drawable/violin"
                         android:layout_width="0dp"
                         android:layout_height="match_parent" android:id="@+id/allMinorKeysImage"
                         android:adjustViewBounds="true"
-                        android:layout_weight="0.5"/>
+                        android:layout_weight="0.5" android:scaleType="fitStart"/>
             </TableRow>
             <TableRow android:layout_width="match_parent" android:layout_height="0dp"
                       android:layout_weight="1">
@@ -43,7 +46,7 @@
                         android:src="@drawable/sheetmusic"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/customImage"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true" android:scaleType="centerInside"/>
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

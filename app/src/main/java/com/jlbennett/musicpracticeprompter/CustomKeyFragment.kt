@@ -23,7 +23,7 @@ class CustomKeyFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentCustomKeyBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_custom_key, container, false)
-        
+
         binding.readyButton.setOnClickListener { view: View ->
             if (!noneSelected(binding)) {
                 Navigation.findNavController(view).navigate(
