@@ -1,17 +1,24 @@
 package com.jlbennett.musicpracticeprompter
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jlbennett.musicpracticeprompter.databinding.FragmentPromptBinding
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 class PromptFragment : Fragment() {
 
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
+
+    private val delayedExecutor: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,13 +31,35 @@ class PromptFragment : Fragment() {
         val args = PromptFragmentArgs.fromBundle(arguments!!)
         keyArray = args.preset
 
-        binding.promptText.setOnClickListener { setPrompt(binding) }
+        binding.promptText.setOnClickListener {
+            //setPrompt(binding)
+            setPromptWithTimer(binding)
+        }
 
         binding.noteReminderButton.setOnClickListener {
             binding.noteReminderText.text = getNotesFromKey(currentKey)
         }
 
         return binding.root
+    }
+
+
+    private fun setPromptWithTimer(binding: FragmentPromptBinding) {
+        val timedPrompt = Runnable {
+            run {
+                setPrompt(binding)
+            }
+        }
+        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt, 0,3, TimeUnit.SECONDS)//DELAY FOR 1 SECOND
+        delayedExecutor.run {
+            schedule({
+                run {
+                    promptHandle.cancel(true)
+                }
+            }, 60, TimeUnit.SECONDS)
+        }//REPEAT FOR 60 SECONDS
+
+
     }
 
     private fun setPrompt(binding: FragmentPromptBinding) {
