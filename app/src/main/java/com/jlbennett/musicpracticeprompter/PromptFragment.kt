@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit
 
 class PromptFragment : Fragment() {
 
+    private lateinit var mode: ModeSelectionFragment.Mode
+    private var delayPeriod: Int = 0
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
 
@@ -26,16 +28,19 @@ class PromptFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentPromptBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
+        val binding: FragmentPromptBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
 
         val args = PromptFragmentArgs.fromBundle(arguments!!)
         keyArray = args.keyArray
+        mode = args.mode
+        delayPeriod = args.delayPeriod
 
-        setPromptWithTimer(binding)
+        setPrompt(binding)//set initial prompt.
 
-        binding.promptText.setOnClickListener {
-            //setPrompt(binding)
-            //setPromptWithTimer(binding)
+        when (mode) {
+            ModeSelectionFragment.Mode.TAP -> binding.promptText.setOnClickListener { setPrompt(binding) }
+            ModeSelectionFragment.Mode.TIMED -> setPromptWithTimer(binding, delayPeriod)
         }
 
         binding.noteReminderButton.setOnClickListener {
@@ -46,13 +51,14 @@ class PromptFragment : Fragment() {
     }
 
 
-    private fun setPromptWithTimer(binding: FragmentPromptBinding) {
+    private fun setPromptWithTimer(binding: FragmentPromptBinding, period: Int) {
         val timedPrompt = Runnable {
             run {
                 setPrompt(binding)
             }
         }
-        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt, 0,3, TimeUnit.SECONDS)//DELAY FOR 1 SECOND
+        val promptHandle =
+            delayedExecutor.scheduleAtFixedRate(timedPrompt, 0, period.toLong(), TimeUnit.SECONDS)//DELAY FOR 1 SECOND
         delayedExecutor.run {
             schedule({
                 run {
