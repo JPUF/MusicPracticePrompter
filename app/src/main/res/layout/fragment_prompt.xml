@@ -9,7 +9,6 @@
                                                        android:layout_height="match_parent"
                                                        android:id="@+id/promptConstraint">
         <TextView
-                android:text="@string/prompt"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

@@ -20,15 +20,14 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
 
         binding.allKeysImage.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(resources.getStringArray(R.array.allKeys)))
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToModeSelectionFragment(resources.getStringArray(R.array.allKeys)))
         }
         binding.allMajorKeysImage.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(resources.getStringArray(R.array.allMajorKeys)))
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToModeSelectionFragment(resources.getStringArray(R.array.allMajorKeys)))
         }
         binding.allMinorKeysImage.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToPromptFragment(resources.getStringArray(R.array.allMinorKeys)))
+            Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToModeSelectionFragment(resources.getStringArray(R.array.allMinorKeys)))
         }
-
         binding.customImage.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToCustomKeyFragment())
         }

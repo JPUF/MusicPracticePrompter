@@ -27,7 +27,8 @@ class CustomKeyFragment : Fragment() {
         binding.readyButton.setOnClickListener { view: View ->
             if (!noneSelected(binding)) {
                 Navigation.findNavController(view).navigate(
-                    CustomKeyFragmentDirections.actionCustomKeyFragmentToPromptFragment(getCurrentKeyArray(binding))
+                    //CustomKeyFragmentDirections.actionCustomKeyFragmentToPromptFragment(getCurrentKeyArray(binding))
+                    CustomKeyFragmentDirections.actionCustomKeyFragmentToModeSelectionFragment(getCurrentKeyArray(binding))
                 )
             } else {//No keys have been selected
                 Toast.makeText(activity, "Nothing selected", Toast.LENGTH_LONG).show()
