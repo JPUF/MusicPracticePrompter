@@ -2,6 +2,7 @@ package com.jlbennett.musicpracticeprompter
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,9 @@ class ModeSelectionFragment : Fragment() {
             Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TAP, 0))
         }
         binding.timedPromptButton.setOnClickListener {view: View ->
+            val delayPeriod: Int = Integer.parseInt(binding.timeEntry.text.toString())
+            Log.i("delay", "Delay: $delayPeriod")
+            //Delay period not functional yet.
             Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TIMED, 2))
         }
 
