@@ -61,11 +61,11 @@ class PromptFragment : Fragment() {
 
     private fun updateProgressBar() {
         updateThread = Thread{
-            while(true) {
+            while(!updateThread.isInterrupted) {
                 val currentTime = Calendar.getInstance().timeInMillis
                 val difference = currentTime - promptChange//number of milliseconds since the prompt changed.
-                val percentOfPeriod: Float = (difference / 200F) * 10F
-                Log.i("progress", "Difference: $difference div 200L ${difference / 200F}  Percent: $percentOfPeriod")
+                val percentOfPeriod: Float = ( difference / (1000F * delayPeriod.toFloat() )) * 100F
+                Log.i("progress", "Period: ${1000F * delayPeriod.toFloat()}  Difference: $difference  Percent: $percentOfPeriod")
                 binding.timerProgressBar.progress = percentOfPeriod.toInt()
                 if(binding.timerProgressBar.progress >= binding.timerProgressBar.max) {
                     binding.timerProgressBar.progress = binding.timerProgressBar.max
@@ -80,7 +80,8 @@ class PromptFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment.
+        if(mode == ModeSelectionFragment.Mode.TIMED)
+            updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment.
         super.onDestroy()
     }
 
