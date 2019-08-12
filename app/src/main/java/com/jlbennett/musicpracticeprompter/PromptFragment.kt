@@ -9,14 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jlbennett.musicpracticeprompter.databinding.FragmentPromptBinding
+import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.thread
 
 class PromptFragment : Fragment() {
 
+    private lateinit var binding: FragmentPromptBinding
     private lateinit var mode: ModeSelectionFragment.Mode
     private var delayPeriod: Int = 0
+    private var promptChange = Calendar.getInstance().timeInMillis
+    private lateinit var updateThread: Thread
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
 
@@ -29,21 +34,24 @@ class PromptFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentPromptBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_prompt, container, false)
 
         val args = PromptFragmentArgs.fromBundle(arguments!!)
         keyArray = args.keyArray
         mode = args.mode
         delayPeriod = args.delayPeriod
 
-        setPrompt(binding)//set initial prompt.
+        setPrompt()//set initial prompt.
 
         when (mode) {
-            ModeSelectionFragment.Mode.TAP -> binding.promptText.setOnClickListener { setPrompt(binding) }
-            ModeSelectionFragment.Mode.TIMED -> setPromptWithTimer(binding, delayPeriod)
-        }
+            ModeSelectionFragment.Mode.TAP -> binding.promptText.setOnClickListener { setPrompt() }
 
+            ModeSelectionFragment.Mode.TIMED -> {
+                binding.timerProgressBar.visibility = View.VISIBLE
+                setPromptWithTimer(delayPeriod)
+                updateProgressBar()
+            }
+        }
         binding.noteReminderButton.setOnClickListener {
             binding.noteReminderText.text = getNotesFromKey(currentKey)
         }
@@ -51,11 +59,36 @@ class PromptFragment : Fragment() {
         return binding.root
     }
 
+    private fun updateProgressBar() {
+        updateThread = Thread{
+            while(true) {
+                val currentTime = Calendar.getInstance().timeInMillis
+                val difference = currentTime - promptChange//number of milliseconds since the prompt changed.
+                val percentOfPeriod: Float = (difference / 200F) * 10F
+                Log.i("progress", "Difference: $difference div 200L ${difference / 200F}  Percent: $percentOfPeriod")
+                binding.timerProgressBar.progress = percentOfPeriod.toInt()
+                if(binding.timerProgressBar.progress >= binding.timerProgressBar.max) {
+                    binding.timerProgressBar.progress = binding.timerProgressBar.max
+                }
+                try {Thread.sleep(25)}
+                catch (e: InterruptedException) {
+                    Log.i("progress", "Thread Interrupted")
+                }
+            }
+        }
+        updateThread.start()
+    }
 
-    private fun setPromptWithTimer(binding: FragmentPromptBinding, period: Int) {
+    override fun onDestroy() {
+        updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment. 
+        super.onDestroy()
+    }
+
+
+    private fun setPromptWithTimer(period: Int) {
         val timedPrompt = Runnable {
             run {
-                setPrompt(binding)
+                setPrompt()
             }
         }
         val promptHandle =
@@ -71,7 +104,7 @@ class PromptFragment : Fragment() {
 
     }
 
-    private fun setPrompt(binding: FragmentPromptBinding) {
+    private fun setPrompt() {
         binding.noteReminderLayout.visibility = View.VISIBLE
         binding.noteReminderText.text = ""
         if (!::currentKey.isInitialized)
@@ -83,6 +116,7 @@ class PromptFragment : Fragment() {
         }
         currentKey = newKey
         binding.promptText.text = currentKey.replace(' ', '\n')
+        promptChange = Calendar.getInstance().timeInMillis
     }
 
     private fun getNotesFromKey(key: String): String {
