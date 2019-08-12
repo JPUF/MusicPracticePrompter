@@ -18,7 +18,7 @@ import com.jlbennett.musicpracticeprompter.databinding.FragmentModeSelectionBind
 
 class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
 
-    enum class Mode{ TAP, TIMED }
+    enum class Mode { TAP, TIMED }
 
     private lateinit var keyArray: Array<String>
     private lateinit var binding: FragmentModeSelectionBinding
@@ -33,37 +33,45 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
         val args = ModeSelectionFragmentArgs.fromBundle(arguments!!)
         keyArray = args.keyArray
 
-        binding.tapModeButton.setOnClickListener {view: View ->
-            Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TAP, 0))
+        binding.tapModeButton.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(
+                ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(
+                    keyArray,
+                    Mode.TAP,
+                    0
+                )
+            )
         }
         binding.timedPromptButton.setOnClickListener {
             binding.delaySelectionLayout.visibility = View.VISIBLE
             binding.readyButton.visibility = View.VISIBLE
         }
 
-        binding.readyButton.setOnClickListener {view: View ->
+        binding.readyButton.setOnClickListener { view: View ->
             val delayPeriod: Int = Integer.parseInt(binding.timeEntry.text.toString())
-            if(delayPeriod in 1..600) {
-                Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TIMED, delayPeriod))
-            }
-            else {
+            if (delayPeriod in 1..600) {
+                Navigation.findNavController(view).navigate(
+                    ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(
+                        keyArray,
+                        Mode.TIMED,
+                        delayPeriod
+                    )
+                )
+            } else {
                 Toast.makeText(activity, "Enter a time between 1 and 600 seconds.", Toast.LENGTH_LONG).show()
             }
         }
-
         binding.delaySeekBar.setOnSeekBarChangeListener(this)
-
-
         return binding.root
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         Log.i("delay", "SeekBar progress $progress")
-        binding.timeEntry.setText((progress*2 + 2).toString())
+        binding.timeEntry.setText((progress * 2 + 2).toString())
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
-        Log.i("touch","Started tracking touch")
+        Log.i("touch", "Started tracking touch")
     }
 
     override fun onStopTrackingTouch(seekBar: SeekBar?) {

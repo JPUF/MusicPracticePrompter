@@ -25,11 +25,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/noteReminderLayout"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
-                android:visibility="invisible" tools:visibility="visible">
+                android:visibility="invisible" tools:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/timerProgressBar">
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent" android:id="@+id/noteReminderText"
@@ -43,5 +43,13 @@
                     android:maxLines="1" android:gravity="center"
                     android:layout_weight="0.4"/>
         </LinearLayout>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/timerProgressBar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:max="100" android:progress="50"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
