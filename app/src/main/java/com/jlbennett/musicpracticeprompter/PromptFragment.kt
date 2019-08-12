@@ -80,7 +80,7 @@ class PromptFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment. 
+        updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment.
         super.onDestroy()
     }
 
