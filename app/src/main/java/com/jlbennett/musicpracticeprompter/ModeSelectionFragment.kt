@@ -33,9 +33,7 @@ class ModeSelectionFragment : Fragment() {
         }
         binding.timedPromptButton.setOnClickListener {view: View ->
             val delayPeriod: Int = Integer.parseInt(binding.timeEntry.text.toString())
-            Log.i("delay", "Delay: $delayPeriod")
-            //Delay period not functional yet.
-            Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TIMED, 2))
+            Navigation.findNavController(view).navigate(ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray, Mode.TIMED, delayPeriod))
         }
 
         return binding.root
