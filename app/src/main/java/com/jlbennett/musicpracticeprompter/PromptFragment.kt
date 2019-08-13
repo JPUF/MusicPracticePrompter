@@ -89,6 +89,7 @@ class PromptFragment : Fragment() {
     private fun setPromptWithTimer(period: Int) {
         val timedPrompt = Runnable {
             run {
+                Log.i("timedPrompt", "setting prompt")
                 setPrompt()
             }
         }
@@ -105,7 +106,9 @@ class PromptFragment : Fragment() {
 
     }
 
-    private fun setPrompt() {
+    private fun setPrompt() {//TODO seems not to work on emulator. Maybe thread gets interrupted before promptText is set.
+        Log.i("timedPrompt", "setPrompt called")
+        promptChange = Calendar.getInstance().timeInMillis
         binding.noteReminderLayout.visibility = View.VISIBLE
         binding.noteReminderText.text = ""
         if (!::currentKey.isInitialized)
@@ -114,10 +117,11 @@ class PromptFragment : Fragment() {
         var newKey: String = currentKey
         while (newKey == currentKey) {
             newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
+            Log.i("timedPrompt","setPrompt:           newKey: $newKey")
         }
         currentKey = newKey
+        Log.i("timedPrompt","setPrompt: setting prompt as $currentKey")
         binding.promptText.text = currentKey.replace(' ', '\n')
-        promptChange = Calendar.getInstance().timeInMillis
     }
 
     private fun getNotesFromKey(key: String): String {
