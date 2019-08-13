@@ -90,20 +90,18 @@ class PromptFragment : Fragment() {
         val timedPrompt = Runnable {
             run {
                 Log.i("timedPrompt", "setting prompt")
-                setPrompt()
+                setPrompt()//updates a TextView with a new prompt.
             }
         }
-        val promptHandle =
-            delayedExecutor.scheduleAtFixedRate(timedPrompt, 0, period.toLong(), TimeUnit.SECONDS)//DELAY FOR 1 SECOND
+
+        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt, 0, period.toLong(), TimeUnit.SECONDS)//Delay by user defined period.
         delayedExecutor.run {
             schedule({
                 run {
                     promptHandle.cancel(true)
                 }
             }, 1, TimeUnit.HOURS)
-        }//REPEAT FOR 1 HOUR
-
-
+        }//REPEAT FOR 1 HOUR (arbitrarily long amount of time, user should never need that long.
     }
 
     private fun setPrompt() {//TODO seems not to work on emulator. Maybe thread gets interrupted before promptText is set.
