@@ -22,6 +22,8 @@ class PromptFragment : Fragment() {
     private var promptChange = Calendar.getInstance().timeInMillis
     private val progressBarHandler = Handler()
     private lateinit var progressBarRunnable: Runnable
+    private val promptHandler = Handler()
+    private lateinit var promptRunnable: Runnable
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
 
@@ -76,33 +78,17 @@ class PromptFragment : Fragment() {
         progressBarHandler.post(progressBarRunnable)
     }
 
-    override fun onDestroy() {
-        if (mode == ModeSelectionFragment.Mode.TIMED) {
-            progressBarHandler.removeCallbacks(progressBarRunnable)
-        }
-        super.onDestroy()
-    }
-
-
     private fun setPromptWithTimer(period: Int) {
-        val timedPrompt = Runnable {
+        promptRunnable = Runnable {
             run {
-                Log.i("timedPrompt", "setting prompt")
                 setPrompt()//updates a TextView with a new prompt.
+                promptHandler.postDelayed(promptRunnable, period * 1000L)
             }
         }
-        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt,0,period.toLong(),TimeUnit.SECONDS)//Delay by user defined period.
-        delayedExecutor.run {
-            schedule({
-                run {
-                    promptHandle.cancel(true)
-                }
-            }, 1, TimeUnit.HOURS)
-        }//REPEAT FOR 1 HOUR (arbitrarily long amount of time, user should never need that long.
-
+        promptHandler.post(promptRunnable)
     }
 
-    private fun setPrompt() {//TODO seems not to work on emulator. Maybe thread gets interrupted before promptText is set.
+    private fun setPrompt() {//TODO test on emulator.
         promptChange = Calendar.getInstance().timeInMillis
         binding.noteReminderLayout.visibility = View.VISIBLE
         binding.noteReminderText.text = ""
@@ -128,5 +114,13 @@ class PromptFragment : Fragment() {
             }
         }
         return notes
+    }
+
+    override fun onDestroy() {
+        if (mode == ModeSelectionFragment.Mode.TIMED) {
+            progressBarHandler.removeCallbacks(progressBarRunnable)
+            promptHandler.removeCallbacks(promptRunnable)
+        }
+        super.onDestroy()
     }
 }
