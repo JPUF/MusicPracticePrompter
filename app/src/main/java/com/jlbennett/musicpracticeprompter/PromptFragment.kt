@@ -2,7 +2,6 @@ package com.jlbennett.musicpracticeprompter
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jlbennett.musicpracticeprompter.databinding.FragmentPromptBinding
 import java.util.*
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.TimeUnit
 
 class PromptFragment : Fragment() {
 
@@ -26,8 +22,6 @@ class PromptFragment : Fragment() {
     private lateinit var promptRunnable: Runnable
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
-
-    private val delayedExecutor: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
 
 
     override fun onCreateView(
@@ -67,7 +61,6 @@ class PromptFragment : Fragment() {
                 val currentTime = Calendar.getInstance().timeInMillis
                 val difference = currentTime - promptChange//number of milliseconds since the prompt changed.
                 val percentOfPeriod: Float = (difference / (1000F * delayPeriod.toFloat())) * 100F
-                //Log.i("progress", "Period: ${1000F * delayPeriod.toFloat()}  Difference: $difference  Percent: $percentOfPeriod")
                 binding.timerProgressBar.progress = percentOfPeriod.toInt()
                 if (binding.timerProgressBar.progress >= binding.timerProgressBar.max) {
                     binding.timerProgressBar.progress = binding.timerProgressBar.max
@@ -99,7 +92,6 @@ class PromptFragment : Fragment() {
             newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
         }
         currentKey = newKey
-        Log.i("timedPrompt", "setPrompt: setting prompt as $currentKey")
         binding.promptText.text = currentKey.replace(' ', '\n')
     }
 
