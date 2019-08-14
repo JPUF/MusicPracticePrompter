@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Music Practice Prompter</string>
+    <string name="app_name">Practice Prompts</string>
     <string name="note_description">Image of a pair of musical notes</string>
 
     <string name="next">Next</string>
@@ -8,6 +8,9 @@
     <string name="notes">Notes</string>
     <string name="selectionTitle">Select the keys you\'d like to practice</string>
     <string name="ready">Ready!</string>
+    <string name="selectMode">Select mode</string>
+    <string name="topForPrompt">Tap for each prompt</string>
+    <string name="timedPrompts">Prompts on a timer</string>
 
     <string-array name="presetArray">
         <item>All keys</item>
@@ -100,10 +103,4 @@
         <item>B♭ Minor|B♭ C D♭ E♭ F G♭ A♭</item>
         <item>F Minor|F G A♭ B♭ C D♭ E♭</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="selectMode">Select mode</string>
-    <string name="topForPrompt">Tap for each prompt</string>
-    <string name="timedPrompts">Prompts on a timer</string>
 </resources>
