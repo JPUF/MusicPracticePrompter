@@ -13,7 +13,6 @@ import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
-import kotlin.concurrent.thread
 
 class PromptFragment : Fragment() {
 
@@ -21,7 +20,8 @@ class PromptFragment : Fragment() {
     private lateinit var mode: ModeSelectionFragment.Mode
     private var delayPeriod: Int = 0
     private var promptChange = Calendar.getInstance().timeInMillis
-    private lateinit var updateThread: Thread
+    private val progressBarHandler = Handler()
+    private lateinit var progressBarRunnable: Runnable
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
 
@@ -60,28 +60,26 @@ class PromptFragment : Fragment() {
     }
 
     private fun updateProgressBar() {
-        updateThread = Thread{
-            while(!updateThread.isInterrupted) {
+        progressBarRunnable = Runnable {
+            run {
                 val currentTime = Calendar.getInstance().timeInMillis
                 val difference = currentTime - promptChange//number of milliseconds since the prompt changed.
-                val percentOfPeriod: Float = ( difference / (1000F * delayPeriod.toFloat() )) * 100F
-                Log.i("progress", "Period: ${1000F * delayPeriod.toFloat()}  Difference: $difference  Percent: $percentOfPeriod")
+                val percentOfPeriod: Float = (difference / (1000F * delayPeriod.toFloat())) * 100F
+                //Log.i("progress", "Period: ${1000F * delayPeriod.toFloat()}  Difference: $difference  Percent: $percentOfPeriod")
                 binding.timerProgressBar.progress = percentOfPeriod.toInt()
-                if(binding.timerProgressBar.progress >= binding.timerProgressBar.max) {
+                if (binding.timerProgressBar.progress >= binding.timerProgressBar.max) {
                     binding.timerProgressBar.progress = binding.timerProgressBar.max
                 }
-                try {Thread.sleep(25)}
-                catch (e: InterruptedException) {
-                    Log.i("progress", "Thread Interrupted")
-                }
+                progressBarHandler.postDelayed(progressBarRunnable, 50)
             }
         }
-        updateThread.start()
+        progressBarHandler.post(progressBarRunnable)
     }
 
     override fun onDestroy() {
-        if(mode == ModeSelectionFragment.Mode.TIMED)
-            updateThread.interrupt()//TODO not working. Thread should not execute whilst not in this fragment.
+        if (mode == ModeSelectionFragment.Mode.TIMED) {
+            progressBarHandler.removeCallbacks(progressBarRunnable)
+        }
         super.onDestroy()
     }
 
@@ -93,8 +91,7 @@ class PromptFragment : Fragment() {
                 setPrompt()//updates a TextView with a new prompt.
             }
         }
-
-        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt, 0, period.toLong(), TimeUnit.SECONDS)//Delay by user defined period.
+        val promptHandle = delayedExecutor.scheduleAtFixedRate(timedPrompt,0,period.toLong(),TimeUnit.SECONDS)//Delay by user defined period.
         delayedExecutor.run {
             schedule({
                 run {
@@ -102,23 +99,21 @@ class PromptFragment : Fragment() {
                 }
             }, 1, TimeUnit.HOURS)
         }//REPEAT FOR 1 HOUR (arbitrarily long amount of time, user should never need that long.
+
     }
 
     private fun setPrompt() {//TODO seems not to work on emulator. Maybe thread gets interrupted before promptText is set.
-        Log.i("timedPrompt", "setPrompt called")
         promptChange = Calendar.getInstance().timeInMillis
         binding.noteReminderLayout.visibility = View.VISIBLE
         binding.noteReminderText.text = ""
-        if (!::currentKey.isInitialized)
-            currentKey = keyArray.random()
+        if (!::currentKey.isInitialized) currentKey = keyArray.random()
 
         var newKey: String = currentKey
         while (newKey == currentKey) {
             newKey = keyArray.random()//Select distinct new key (can't be given the same prompt sequentially)
-            Log.i("timedPrompt","setPrompt:           newKey: $newKey")
         }
         currentKey = newKey
-        Log.i("timedPrompt","setPrompt: setting prompt as $currentKey")
+        Log.i("timedPrompt", "setPrompt: setting prompt as $currentKey")
         binding.promptText.text = currentKey.replace(' ', '\n')
     }
 
