@@ -11,6 +11,7 @@
     <string name="selectMode">Select mode</string>
     <string name="topForPrompt">Tap for each prompt</string>
     <string name="timedPrompts">Prompts on a timer</string>
+    <string name="promptPreview">C\nMinor</string>
 
     <string-array name="presetArray">
         <item>All keys</item>

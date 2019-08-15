@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/navigation.xml" app:startDestination="@id/titleFragment">
 
     <fragment android:id="@+id/titleFragment" android:name="com.jlbennett.musicpracticeprompter.TitleFragment"
-              android:label="Practice Prompts">
+              android:label="Practice Prompts" tools:layout="@layout/fragment_title">
         <action android:id="@+id/action_titleFragment_to_customKeyFragment" app:destination="@id/customKeyFragment"/>
         <action android:id="@+id/action_titleFragment_to_modeSelectionFragment"
                 app:destination="@id/modeSelectionFragment"/>
     </fragment>
     <fragment android:id="@+id/promptFragment" android:name="com.jlbennett.musicpracticeprompter.PromptFragment"
-              android:label="Practice Prompts">
+              android:label="Practice Prompts" tools:layout="@layout/fragment_prompt">
         <argument android:name="keyArray" app:argType="string[]"/>
         <argument android:name="mode" app:argType="com.jlbennett.musicpracticeprompter.ModeSelectionFragment$Mode"
         />
         <argument android:name="delayPeriod" app:argType="integer"/>
     </fragment>
     <fragment android:id="@+id/customKeyFragment" android:name="com.jlbennett.musicpracticeprompter.CustomKeyFragment"
-              android:label="Practice Prompts">
+              android:label="Practice Prompts" tools:layout="@layout/fragment_custom_key">
         <action android:id="@+id/action_customKeyFragment_to_modeSelectionFragment"
                 app:destination="@id/modeSelectionFragment"/>
     </fragment>
     <fragment android:id="@+id/modeSelectionFragment"
               android:name="com.jlbennett.musicpracticeprompter.ModeSelectionFragment"
-              android:label="Practice Prompts">
+              android:label="Practice Prompts" tools:layout="@layout/fragment_mode_selection">
         <argument android:name="keyArray" app:argType="string[]"/>
         <action android:id="@+id/action_modeSelectionFragment_to_promptFragment" app:destination="@id/promptFragment"/>
     </fragment>
