@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -19,7 +20,7 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
     enum class Mode { TAP, TIMED }
 
     private lateinit var keyArray: Array<String>
-    private lateinit var binding: FragmentModeSelectionBinding
+    //private lateinit var binding: FragmentModeSelectionBinding
 
 
     override fun onCreateView(
@@ -27,7 +28,7 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mode_selection, container, false)
+        val binding: FragmentModeSelectionBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_mode_selection, container, false)
 
         val args = ModeSelectionFragmentArgs.fromBundle(arguments!!)
         keyArray = args.keyArray
@@ -56,13 +57,23 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
                 Toast.makeText(activity, "Enter a time between 1 and 600 seconds.", Toast.LENGTH_LONG).show()
             }
         }
-        binding.delaySeekBar.setOnSeekBarChangeListener(this)
+        //binding.delaySeekBar.setOnSeekBarChangeListener(this)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val seekBar = view.findViewById<SeekBar>(R.id.delaySeekBar)
+        seekBar.setOnSeekBarChangeListener(this)
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         Log.i("delay", "SeekBar progress $progress")
-        binding.timeEntry.setText((progress * 2 + 2).toString())
+        val textView = view!!.findViewById<TextView>(R.id.timeEntry)
+        textView.text = (progress * 2 + 2).toString()
+        //Previous cause of memory leak. Solved by replacing a binding reference with a findByViewId() call
+        //and reducing the scope of binding.
+
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {

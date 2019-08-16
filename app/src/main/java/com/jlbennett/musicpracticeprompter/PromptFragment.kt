@@ -111,7 +111,9 @@ class PromptFragment : Fragment() {
     override fun onDestroy() {
         if (mode == ModeSelectionFragment.Mode.TIMED) {
             progressBarHandler.removeCallbacks(progressBarRunnable)
+            progressBarHandler.removeCallbacksAndMessages(null)
             promptHandler.removeCallbacks(promptRunnable)
+            promptHandler.removeCallbacksAndMessages(null)
         }
         super.onDestroy()
     }
