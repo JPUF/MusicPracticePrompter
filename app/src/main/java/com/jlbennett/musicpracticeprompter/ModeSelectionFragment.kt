@@ -1,10 +1,7 @@
 package com.jlbennett.musicpracticeprompter
 
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +20,7 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
 
     private lateinit var keyArray: Array<String>
     private lateinit var binding: FragmentModeSelectionBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,11 +50,7 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
             val delayPeriod: Int = Integer.parseInt(binding.timeEntry.text.toString())
             if (delayPeriod in 1..600) {
                 Navigation.findNavController(view).navigate(
-                    ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(
-                        keyArray,
-                        Mode.TIMED,
-                        delayPeriod
-                    )
+                    ModeSelectionFragmentDirections.actionModeSelectionFragmentToPromptFragment(keyArray,Mode.TIMED,delayPeriod)
                 )
             } else {
                 Toast.makeText(activity, "Enter a time between 1 and 600 seconds.", Toast.LENGTH_LONG).show()
