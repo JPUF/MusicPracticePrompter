@@ -32,4 +32,4 @@ The user may wish to use the app in landscape orientation, so a separate layout 
 ### Memory Leaks
 To avoid OutOfMemoryErrors, developers should identify and fix memory leaks. This is particularly important with my app, since some users may well wish to use the app for long sessions without closing the app. 
 
-I used LeakCanary to identify the possible causes of memory leaks.
+I used [LeakCanary](https://square.github.io/leakcanary/) to identify the possible causes of memory leaks.
