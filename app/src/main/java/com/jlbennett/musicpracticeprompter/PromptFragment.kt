@@ -109,6 +109,7 @@ class PromptFragment : Fragment() {
     }
 
     override fun onDestroy() {
+        //TODO timers should be stopped in onStop() not onDestory()
         if (mode == ModeSelectionFragment.Mode.TIMED) {
             progressBarHandler.removeCallbacks(progressBarRunnable)
             progressBarHandler.removeCallbacksAndMessages(null)
