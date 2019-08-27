@@ -2,7 +2,6 @@ package com.jlbennett.musicpracticeprompter
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,16 @@ class PromptFragment : Fragment() {
 
     private lateinit var binding: FragmentPromptBinding
     private lateinit var mode: ModeSelectionFragment.Mode
+
     private var delayPeriod: Int = 0
     private var promptChange = Calendar.getInstance().timeInMillis
+
     private val progressBarHandler = Handler()
     private lateinit var progressBarRunnable: Runnable
+
     private val promptHandler = Handler()
     private lateinit var promptRunnable: Runnable
+
     private lateinit var keyArray: Array<String>
     private lateinit var currentKey: String
 
@@ -77,7 +80,6 @@ class PromptFragment : Fragment() {
             run {
                 setPrompt()//updates a TextView with a new prompt.
                 promptHandler.postDelayed(promptRunnable, period * 1000L)
-                Log.i("PromptFragment", "new prompt")
             }
         }
         promptHandler.post(promptRunnable)
@@ -111,7 +113,6 @@ class PromptFragment : Fragment() {
     }
 
     override fun onStop() {
-        //TODO timers should be stopped in onStop() not onDestroy()
         if (mode == ModeSelectionFragment.Mode.TIMED) {
             progressBarHandler.removeCallbacks(progressBarRunnable)
             progressBarHandler.removeCallbacksAndMessages(null)
