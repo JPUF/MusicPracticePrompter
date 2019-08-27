@@ -57,7 +57,6 @@ class ModeSelectionFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
                 Toast.makeText(activity, "Enter a time between 1 and 600 seconds.", Toast.LENGTH_LONG).show()
             }
         }
-        //binding.delaySeekBar.setOnSeekBarChangeListener(this)
         return binding.root
     }
 

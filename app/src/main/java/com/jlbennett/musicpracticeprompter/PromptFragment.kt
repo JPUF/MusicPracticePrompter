@@ -2,6 +2,7 @@ package com.jlbennett.musicpracticeprompter
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -76,12 +77,13 @@ class PromptFragment : Fragment() {
             run {
                 setPrompt()//updates a TextView with a new prompt.
                 promptHandler.postDelayed(promptRunnable, period * 1000L)
+                Log.i("PromptFragment", "new prompt")
             }
         }
         promptHandler.post(promptRunnable)
     }
 
-    private fun setPrompt() {//TODO test on emulator.
+    private fun setPrompt() {
         promptChange = Calendar.getInstance().timeInMillis
         binding.noteReminderLayout.visibility = View.VISIBLE
         binding.noteReminderText.text = ""
@@ -108,14 +110,14 @@ class PromptFragment : Fragment() {
         return notes
     }
 
-    override fun onDestroy() {
-        //TODO timers should be stopped in onStop() not onDestory()
+    override fun onStop() {
+        //TODO timers should be stopped in onStop() not onDestroy()
         if (mode == ModeSelectionFragment.Mode.TIMED) {
             progressBarHandler.removeCallbacks(progressBarRunnable)
             progressBarHandler.removeCallbacksAndMessages(null)
             promptHandler.removeCallbacks(promptRunnable)
             promptHandler.removeCallbacksAndMessages(null)
         }
-        super.onDestroy()
+        super.onStop()
     }
 }
