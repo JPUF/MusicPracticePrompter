@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.jlbennett.musicpracticeprompter.databinding.FragmentTitleBinding
+import java.lang.System.gc
 
 
 class TitleFragment : Fragment() {
@@ -32,7 +33,11 @@ class TitleFragment : Fragment() {
             Navigation.findNavController(view).navigate(TitleFragmentDirections.actionTitleFragmentToCustomKeyFragment())
         }
 
-
         return binding.root
+    }
+
+    override fun onStop() {
+        gc()
+        super.onStop()
     }
 }
