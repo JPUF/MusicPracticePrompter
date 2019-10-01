@@ -1,7 +1,7 @@
 # 🎼 Practice Prompts 
 ***An Android app for music practice.***
 
-▶️ Google Play
+▶️ [Google Play](https://play.google.com/store/apps/details?id=com.jlbennett.musicpracticeprompter)
 
 ![screenshots of the app](https://i.imgur.com/wXIFc3l.jpg)
 
